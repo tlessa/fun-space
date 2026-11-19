@@ -39,7 +39,7 @@ export default defineConfig(async ({ command, isPreview }): Promise<UserConfig> 
   const { codexPatch, codexBuild } = readCodexBuildInfo({ isDevServer })
 
   return {
-    base: command === 'build' || isPreview ? buildBase : '/',
+    base: command === 'build' ? '/fun-space/' : '/',
     define: {
       __CODEX_PATCH__: JSON.stringify(codexPatch ? String(codexPatch.change ?? 'patched') : null),
       __CODEX_BUILD__: JSON.stringify(codexBuild),
