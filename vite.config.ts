@@ -14,7 +14,7 @@ import { protowikiCodexDevSwitch } from './scripts/vite-plugin-codex-dev-switch.
 // Vue Router's normalizeBase turns './' into '/.', so the current path never
 // matches your routes (blank app). CI sets PROTOWIKI_BASE from the repo name.
 // Override locally, e.g. PROTOWIKI_BASE='/ProtoWiki/' npm run build
-const buildBase = process.env.PROTOWIKI_BASE ?? '/protowiki/'
+const buildBase = process.env.PROTOWIKI_BASE ?? '/fun-space/'
 
 const ghPagesRestoreScript = readFileSync(
   new URL('./public/gh-pages-restore.js', import.meta.url),
