@@ -32,6 +32,7 @@ function readJsonBody(req) {
   })
 }
 
+/** @returns {import('vite').Plugin} */
 export function protowikiCodexDevSwitch() {
   return {
     name: 'protowiki-codex-dev-switch',

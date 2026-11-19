@@ -2,7 +2,7 @@ import { copyFileSync, existsSync, readFileSync, writeFileSync } from 'node:fs'
 import { fileURLToPath, URL } from 'node:url'
 import { resolve } from 'node:path'
 
-import { defineConfig } from 'vite'
+import { defineConfig, type UserConfig } from 'vite'
 import VueRouter from 'unplugin-vue-router/vite'
 import vue from '@vitejs/plugin-vue'
 
@@ -27,7 +27,9 @@ const ghPagesPreview404Script = readFileSync(
 
 const isVariantSubpathBuild = process.env.PROTOWIKI_CODEX_VARIANT_SUBPATH === '1'
 
-export default defineConfig(async ({ command, isPreview }) => {
+// Explicit return type so TS checks the returned object as a Vite config —
+// otherwise `apply: 'build'` widens to `string` and defineConfig rejects it.
+export default defineConfig(async ({ command, isPreview }): Promise<UserConfig> => {
   const codexChanged = await reconcileCodexInstall({ log: () => {} })
   if (codexChanged) {
     console.log('[codex] reconciled node_modules with patches/codex/')
